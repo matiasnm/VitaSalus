@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Rastanty;
+    src: url('../fonts/RastantyCortez.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Cantarell;
+    src: url('../fonts/Cantarell-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Comfortaa;
+    src: url('../fonts/Comfortaa-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
