@@ -184,6 +184,28 @@ input {
 .contact-info a:hover {
     color: var(--green-blue);
 }
+.animate-hue {
+    -webkit-animation: rainbow 12s steps(36) infinite;
+}
+@-webkit-keyframes rainbow {
+    0% { -webkit-filter:hue-rotate(60deg); }
+    50% { -webkit-filter:hue-rotate(180deg); }
+    100% { -webkit-filter:hue-rotate(60deg); }
+ }
+@keyframes rainbow {
+    0% {
+        -webkit-filter:hue-rotate(60deg);
+        filter:hue-rotate(60deg);
+    }
+    50% {
+        -webkit-filter:hue-rotate(180deg);
+        filter:hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter:hue-rotate(60deg);
+        filter:hue-rotate(60deg);
+    }
+}
 /* === main + sections === */
 section {
     margin: auto;
@@ -193,19 +215,19 @@ section {
 section h1 {
     font-size: 3rem;
     line-height: 4rem;  
-    margin-bottom: 2rem;   
+    margin-bottom: 3rem;   
 }
 section h2 {
     font-size: 2rem;
     line-height: 2rem;
-    margin-top: 2rem;  
-    margin-bottom: 1.5rem;   
+    /*margin-top: 2rem; */ 
+    margin-bottom: 2rem;   
 }
 section h3 {
     font-size: 1.5rem;
     line-height: 2rem;
-    margin-top: 2rem; 
-    margin-bottom: 1.5rem;    
+    /*margin-top: 2rem; */ 
+    margin-bottom: 2rem;    
 }
 section p {
     font-size: 1.25rem;
@@ -257,10 +279,18 @@ section ul {
     margin: 2rem;
     background-color: var(--mauve-dark-color);
 }
+.figure-square img {
+    min-width: 300px;
+    min-height: 300px;
+    border-radius: 0%;
+    padding: 2rem;
+    background-color: var(--mauve-dark-color);
+}
 .card-100 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 3rem;
     margin: auto;
     width: 100%;
 }
@@ -268,6 +298,7 @@ section ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 3rem;
     margin: auto;
     width: 80%;
 }
@@ -275,6 +306,7 @@ section ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 3rem;
     margin: auto;
     width: 60%;
 }
@@ -369,8 +401,7 @@ section ul {
 }
 .card-type-figure {
     width: 80%;
-    margin: auto;
-    padding: 3rem;  
+    margin: auto; 
     display: flex;
     flex-direction: row;
 }
