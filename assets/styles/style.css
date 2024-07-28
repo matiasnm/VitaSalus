@@ -64,6 +64,7 @@ header {
 }
 .header-nav {
     padding-left: 2rem;
+    z-index: 999;
 }
 .header-nav__ul {
     list-style-type: none;
@@ -281,7 +282,7 @@ section ul {
 }
 .figure-square img {
     min-width: 300px;
-    min-height: 300px;
+    min-height: 200px;
     border-radius: 0%;
     padding: 2rem;
     background-color: var(--mauve-dark-color);
