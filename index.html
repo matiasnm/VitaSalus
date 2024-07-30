@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="./assets/styles/style.css" />
   </head>
   <body>
@@ -41,7 +42,7 @@
               <span class="max-text"><b class="col-">entorno</b></span>
                 </div>
                 <figure class="card-type-hero-figure">
-                  <img class="animate-hue" src="./assets/img/logo-colores.svg">
+                  <img class="animate-hue" src="./assets/img/logo.svg">
                 </figure>
               </div>
               <div class="w-50-start">
@@ -57,7 +58,7 @@
           <div class="card-type-hero-1280">
             <div class="w-50 pr-2 flex-center">
               <figure class="card-type-hero-figure">
-                <img class="animate-hue" src="./assets/img/logo-colores.svg">
+                <img class="animate-hue" src="./assets/img/logo.svg">
               </figure>
               <div class="card-type-hero-text">
                 <p lang="es">Se trata de una práctica integrativa y ambiental. Nuestro enfoque va más allá del tradicional o     alopático, que está dirigido al síntoma o la    enfermedad, sino a la relación de la persona con su   entorno promoviendo una verdadera “ecología clínica”.</p>
@@ -83,7 +84,7 @@
           <div class="card-type-hero-768">
             <div class="w-50 pr-2 flex-center">
               <figure class="card-type-hero-figure">
-                <img class="animate-hue" src="./assets/img/logo-colores.svg">
+                <img class="animate-hue" src="./assets/img/logo.svg">
               </figure>
               <div class="card-type-hero-text">
                 <p lang="es">Se trata de una práctica integrativa y ambiental. Nuestro enfoque va más allá del tradicional o     alopático, que está dirigido al síntoma o la    enfermedad, sino a la relación de la persona con su   entorno promoviendo una verdadera “ecología clínica”.</p>
@@ -109,7 +110,7 @@
           <div class="card-type-hero-480">
             <div class="w-100 flex-center">
               <figure class="card-type-hero-figure">
-                  <img class="animate-hue" src="./assets/img/logo-colores.svg">
+                  <img class="animate-hue" src="./assets/img/logo.svg">
               </figure>
               <div class="card-type-hero-title">
                 <span class="med-text">La </span>
@@ -222,7 +223,7 @@
         <div class="card-80">
           <div class="card-type-figure">
             <figure class="figure-square">
-              <img class="animate-hue" src="./assets/img/foroGrupal.png" alt="Malpartida Alejandro y Mayol Soledad">
+              <img class="animate-hue" src="./assets/img/fotoGrupal.png" alt="Malpartida Alejandro y Mayol Soledad">
             </figure>
             <div class="card-type-figure-text">
               <h2>Nosotros</h2>
@@ -261,15 +262,19 @@
                 <a href="mailto:info@vitasalus.com.ar"><b>info@vitasalus.com.ar</b></a>
               </p>
             </div>
+
             <div class="contact-form card-80">
-              <input id="form-email" class="mb-2" type="email" placeholder="Ingrese su email" required>
-              <textarea id="form-body" class="mb-2" rows="10" placeholder="Hola!"></textarea>
-              <button class="btn">ENVIAR</button>
+              <input id="form-email" name="email" class="mb-2" type="email" placeholder="Ingrese su email" autocomplete="on" required>
+              <textarea id="form-body" name="body" class="mb-2" type="textarea" rows="10" placeholder="Ingrese su consulta" autocomplete="off" required></textarea>
+              <button id="form-submit" class="btn">ENVIAR</button>
+              <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdrLxsqAAAAAKZ2sDvVEXLn_VB28etarbW6zNG2"></div>
             </div>
           </div>
         </div>
       </section>
 
+      
+      <div id="snackbar"></div>
     </main>
 
     <footer>
@@ -291,5 +296,14 @@
       </nav>
     </footer>
   <script src="./assets/scripts/script.js"></script>
+  <script>
+    function onLoadCallBack() {
+      grecaptcha.render('recaptcha', {
+        sitekey:'6LdrLxsqAAAAAKZ2sDvVEXLn_VB28etarbW6zNG2',
+        callback: successCallback,
+      });
+    }
+    function successCallback(token) {}
+  </script>
   </body>
 </html>
