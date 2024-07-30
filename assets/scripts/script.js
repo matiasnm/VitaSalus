@@ -63,3 +63,58 @@ let sectionQuehacemos = document.getElementById("section-quehacemos")
 let sectionNosotros = document.getElementById("section-nosotros");
 //let sectionPacientes = document.getElementById("section-pacientes");
 let sectionContacto = document.getElementById("section-contacto");
+
+//let emailInput = document.getElementById("form-email");
+//let bodyInput = document.getElementById("form-body");
+let formError = document.getElementById("form-error");
+
+function getSnackbar(msg) {
+  var x = document.getElementById("snackbar");
+  x.innerText = msg;
+  x.className = "show";
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); x.innerText = ""; }, 3000);
+}
+
+document.getElementById("form-submit").addEventListener("click", (ev) => {
+  ev.preventDefault();
+  let email = document.getElementById("form-email").value;
+  let body = document.getElementById("form-body").value;
+  if (!validateContactForm(email, body)) {
+    event.preventDefault();
+    getSnackbar("ERROR: Complete o verifique los campos del formulario.");
+  }
+  else
+    sendForm(email, body);
+});
+
+function isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return emailRegex.test(email);
+}
+
+function validateContactForm(email, body) {
+  if (!email || !body.trim()) {
+    return false;
+  }
+  if (!isValidEmail(email)) {
+    return false;
+  }
+  return true;
+}
+
+function sendForm(email, body) {
+  let formData = new URLSearchParams();
+  formData.append('email', email);
+  formData.append('body', body);
+  fetch('./php-mailer/send-mail.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    },
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => getSnackbar("Mensaje Enviado"));
+  //document.querySelector("p.broken").innerHTML = data
+}
